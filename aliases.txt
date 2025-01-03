@@ -11,15 +11,37 @@ alias Tmux_new_d='tmux new-session -d -s'
 alias Tmux_attach='tmux attach -t'
 alias Tmux_kill='tmux kill-session -t'
 
-# Blender
-alias Blender_console='tmux attach -t Blender'
-alias Blender_start='tmux new-session -s Blender -c ~/Blender'
-alias Blender_kill='tmux kill-session -t Blender'
-alias Blender_restart='Blender_kill && Blender_start'
+# ManualRender
+alias ManualRender_image='f(){ blender -b "$1" -o untitled## -f 1; }; f'
+alias ManualRender_animation='f(){ blender -b "$1" -o untitled## -a; }; f'
+alias ManualRender_frames='f(){ blender -b "$1" -o untitled## -s "$2" -e "$3" -a; }; f'
 
 # Render
-alias Render_frame='blender -b Loadout.blend -o render_##### -f 1'
-alias Render_animation='blender -b Loadout.blend -o animation_##### -a'
+Render_image() {
+    session_name="RenderSession_$(date +%H%M%S)"
+    output_file="untitled##"
+    tmux new-session -s "$session_name" "blender -b \"$1\" -o \"$output_file\" -f 1; \
+    read -p 'Press [Enter] to exit...'"
+    echo "Render started. To see the progress, do 'tmux attach -t $session_name'"
+}
+
+Render_animation() {
+    session_name="RenderSession_$(date +%Y%m%d_%H%M%S)"
+    output_file="untitled##"
+    tmux new-session -s "$session_name" "blender -b \"$1\" -o \"$output_file\" -a; \
+    read -p 'Press [Enter] to exit...'"
+    echo "Render started. To see the progress, do 'tmux attach -t $session_name'"
+}
+
+Render_frames() {
+    session_name="RenderSession_$(date +%Y%m%d_%H%M%S)"
+    output_file="untitled##"
+    start_frame="$2"
+    end_frame="$3"
+    tmux new-session -s "$session_name" "blender -b \"$1\" -o \"$output_file\" -s \"$start_frame\" -e \"$end_frame\" -a; \
+    read -p 'Press [Enter] key to exit...'"
+    echo "Render started. To see the progress, do 'tmux attach -t $session_name'"
+}
 
 
 # Original .bashrc content
