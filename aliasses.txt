@@ -1,0 +1,18 @@
+## Aliasse
+
+# Custom Aliasse
+alias Home='cd ~/'
+alias Aliasse='nano ~/.bashrc && source ~/.bashrc'
+
+# Tmux
+alias Terminals='tmux ls'
+alias Tmux_new='tmux new-session -s'
+alias Tmux_new_d='tmux new-session -d -s'
+alias Tmux_attach='tmux attach -t'
+alias Tmux_kill='tmux kill-session -t'
+
+# Blender Aliases
+alias Blender_console='tmux attach -t Blender'
+alias Blender_start='tmux new-session -d -s Blender -c ~/Blender'
+alias Blender_kill='tmux kill-session -t Blender'
+alias Blender_restart='Blender_kill && Blender_start'
