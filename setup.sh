@@ -1,18 +1,15 @@
 #!/bin/bash
 
-# Create Blender directory
+# Create Blender directorys
 mkdir -p "$HOME/Blender"
-
-# Backup the original .bashrc (optional, but recommended)
-cp ~/.bashrc ~/.bashrc.bak
 
 # Create a temporary file for modifications
 TEMP_FILE=$(mktemp)
 
-# Add new aliases to the beginning of .bashrc
+# Add aliases to .bashrc
 {
-	echo "## Aliasse"
-	echo ""
+    echo "## Aliasse"
+    echo ""
     echo "# Custom Aliasse"
     echo "alias Home='cd ~/'"
     echo "alias Aliasse='nano ~/.bashrc && source ~/.bashrc'"
@@ -46,12 +43,10 @@ mv "$TEMP_FILE" ~/.bashrc
 sed -i 's/^#force_color_prompt=yes/force_color_prompt=yes/' ~/.bashrc
 
 # Reload .bashrc to apply changes
-source ~/.bashrc
-
-# Update package list
-sudo apt update
+. ~/.bashrc
 
 # Install required packages
+sudo apt update
 sudo apt install -y blender tmux neofetch
 
 echo "Installation and configuration are complete."
