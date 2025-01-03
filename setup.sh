@@ -1,17 +1,18 @@
 #!/bin/bash
 
 # Create Blender directory
-BLENDER_DIR="$HOME/Blender"
-mkdir -p "$BLENDER_DIR"
+mkdir -p "$HOME/Blender"
 
-# Path to the .bashrc
-BASHRC_FILE="$HOME/.bashrc"
+# Backup the original .bashrc (optional, but recommended)
+cp ~/.bashrc ~/.bashrc.bak
 
 # Create a temporary file for modifications
 TEMP_FILE=$(mktemp)
 
 # Add new aliases to the beginning of .bashrc
 {
+	echo "## Aliasse"
+	echo ""
     echo "# Custom Aliasse"
     echo "alias Home='cd ~/'"
     echo "alias Aliasse='nano ~/.bashrc && source ~/.bashrc'"
@@ -27,7 +28,7 @@ TEMP_FILE=$(mktemp)
     
     echo "# Blender Aliases"
     echo "alias Blender_console='tmux attach -t Blender'"
-    echo "alias Blender_start='tmux new-session -d -s Blender \"cd $BLENDER_DIR\"'"
+    echo "alias Blender_start='tmux new-session -d -s Blender \"cd ~/Blender\"'"
     echo "alias Blender_kill='tmux kill-session -t Blender'"
     echo "alias Blender_restart='Blender_kill && Blender_start'"
     
@@ -35,17 +36,17 @@ TEMP_FILE=$(mktemp)
     echo "# Original .bashrc content"
     
     # Append the original content
-    cat "$BASHRC_FILE"
+    cat ~/.bashrc
 } > "$TEMP_FILE"
 
 # Replace the original .bashrc with the new content
-mv "$TEMP_FILE" "$BASHRC_FILE"
+mv "$TEMP_FILE" ~/.bashrc
 
 # Activate color prompt
-sed -i 's/^#force_color_prompt=yes/force_color_prompt=yes/' "$BASHRC_FILE"
+sed -i 's/^#force_color_prompt=yes/force_color_prompt=yes/' ~/.bashrc
 
 # Reload .bashrc to apply changes
-source "$BASHRC_FILE"
+source ~/.bashrc
 
 # Update package list
 sudo apt update
