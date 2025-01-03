@@ -10,7 +10,7 @@ curl -s https://raw.githubusercontent.com/FreakMediaLP/Blender-CLI-Setup/main/al
 sed -i 's/^#force_color_prompt=yes/force_color_prompt=yes/' ~/.bashrc
 
 # Reload .bashrc to apply changes
-. ~/.bashrc
+source ~/.bashrc
 
 # Install required packages
 sudo apt update
