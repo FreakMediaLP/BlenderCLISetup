@@ -1,4 +1,4 @@
-## Aliasse
+## Aliases
 
 # Custom Aliasse
 alias Home='cd ~/'
@@ -16,3 +16,6 @@ alias Blender_console='tmux attach -t Blender'
 alias Blender_start='tmux new-session -d -s Blender -c ~/Blender'
 alias Blender_kill='tmux kill-session -t Blender'
 alias Blender_restart='Blender_kill && Blender_start'
+
+
+# Original .bashrc content
