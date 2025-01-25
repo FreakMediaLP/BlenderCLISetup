@@ -8,13 +8,14 @@ alias Aliasse='nano ~/.bashrc && source ~/.bashrc'
 alias Terminals='tmux ls'
 alias Tmux_new='tmux new-session -s'
 alias Tmux_new_d='tmux new-session -d -s'
-alias Tmux_attach='tmux attach -t'
 alias Tmux_kill='tmux kill-session -t'
+alias Tmux_attach='tmux attach'
+alias Tmux_attach_name='tmux attach -t'
 
 # ManualRender
-alias ManualRender_image='f(){ blender -b "$1" -o untitled## -f 1; }; f'
-alias ManualRender_animation='f(){ blender -b "$1" -o untitled## -a; }; f'
-alias ManualRender_frames='f(){ blender -b "$1" -o untitled## -s "$2" -e "$3" -a; }; f'
+alias ManualRender_image='f(){ blender -b "$1" -o untitled_$(date +'%H%M%S') -f 1; }; f'
+alias ManualRender_animation='f(){ blender -b "$1" -o untitled_$(date +'%H%M%S') -a; }; f'
+alias ManualRender_frames='f(){ blender -b "$1" -o untitled_$(date +'%H%M%S') -s "$2" -e "$3" -a; }; f'
 
 # Render
 Render_image() {
