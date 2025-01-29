@@ -13,14 +13,14 @@ alias Tmux_attach='tmux attach'
 alias Tmux_attach_name='tmux attach -t'
 
 # ManualRender
-alias ManualRender_image='f(){ blender -b "$1" -o untitled_$(date +'%H%M%S') -f 1; }; f'
-alias ManualRender_animation='f(){ blender -b "$1" -o untitled_$(date +'%H%M%S') -a; }; f'
-alias ManualRender_frames='f(){ blender -b "$1" -o untitled_$(date +'%H%M%S') -s "$2" -e "$3" -a; }; f'
+alias ManualRender_image='f(){ blender -b "$1" -o untitled_$(date +'%H%M%S')_ -f 1; }; f'
+alias ManualRender_animation='f(){ blender -b "$1" -o untitled_$(date +'%H%M%S')_ -a; }; f'
+alias ManualRender_frames='f(){ blender -b "$1" -o untitled_$(date +'%H%M%S')_ -s "$2" -e "$3" -a; }; f'
 
 # Render
 Render_image() {
     session_name="Render_$(date +'%H%M%S')"
-    output_file="untitled_$(date +'%H%M%S')"
+    output_file="untitled_$(date +'%H%M%S')_"
     tmux new-session -s "$session_name" "blender -b \"$1\" -o \"$output_file\" -f 1; \
     read -p 'Press [Enter] to exit...'"
     echo "Render started. To see the progress, do 'tmux attach -t $session_name'"
@@ -28,7 +28,7 @@ Render_image() {
 
 Render_animation() {
     session_name="Render_$(date +'%H%M%S')"
-    output_file="untitled_$(date +'%H%M%S')"
+    output_file="untitled_$(date +'%H%M%S')_"
     tmux new-session -s "$session_name" "blender -b \"$1\" -o \"$output_file\" -a; \
     read -p 'Press [Enter] to exit...'"
     echo "Render started. To see the progress, do 'tmux attach -t $session_name'"
@@ -36,7 +36,7 @@ Render_animation() {
 
 Render_frames() {
     session_name="Render_$(date +'%H%M%S')"
-    output_file="untitled_$(date +'%H%M%S')"
+    output_file="untitled_$(date +'%H%M%S')_"
     start_frame="$2"
     end_frame="$3"
     tmux new-session -s "$session_name" "blender -b \"$1\" -o \"$output_file\" -s \"$start_frame\" -e \"$end_frame\" -a; \
