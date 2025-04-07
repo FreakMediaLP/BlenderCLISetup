@@ -1,4 +1,4 @@
-# Blender-CLI-Setup
+# BlenderCLISetup
 A Project to set up the **Blender CLI** on a Linux Server with custom commands and Tmux sessions.
 
 ## Ussage
