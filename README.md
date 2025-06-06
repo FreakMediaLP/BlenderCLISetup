@@ -4,7 +4,7 @@ A Project to set up the **Blender CLI** on a Linux Server with custom commands a
 ## Ussage
 
 ```bash
-source <(curl -fsSL https://raw.githubusercontent.com/FreakMediaLP/BlenderCLISetup/main/setup.sh)
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/FreakMediaLP/BlenderCLISetup/main/setup.sh)"
 ```
 
 ## Commands
