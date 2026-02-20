@@ -3,7 +3,7 @@
 # Create Blender directories
 mkdir -p "$HOME/Blender"
 
-# Download aliasses and prepend it to .bashrc
+# Download aliases and prepend it to .bashrc
 curl -s https://raw.githubusercontent.com/FreakMediaLP/Blender-CLI-Setup/main/aliases.txt | cat - ~/.bashrc > temp && mv temp ~/.bashrc
 
 # Activate color prompt
