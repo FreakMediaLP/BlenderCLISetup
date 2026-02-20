@@ -2,7 +2,7 @@
 
 # Custom Aliases
 alias Home='cd ~/'
-alias Aliasse='nano ~/.bashrc && source ~/.bashrc'
+alias Aliases='nano ~/.bashrc && source ~/.bashrc'
 
 # Tmux
 alias Terminals='tmux ls'
